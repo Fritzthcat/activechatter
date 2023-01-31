@@ -1,0 +1,27 @@
+import speech_recognition as sr
+
+r = sr.Recognizer()
+
+keywords = ["hello", "how are you", "goodbye"]
+responses = ["Hi there!", "I'm doing well, thank you!", "Goodbye!"]
+
+def listen_to_audio():
+    with sr.Microphone() as source:
+        print("Listening...")
+        audio = r.listen(source)
+        return audio
+
+def recognize_speech(audio):
+    text = r.recognize_google(audio)
+    print("You said: {}".format(text))
+    return text
+
+def chatbot_response(text):
+    for keyword, response in zip(keywords, responses):
+        if keyword in text.lower():
+            print("Chatbot: {}".format(response))
+
+while True:
+    audio = listen_to_audio()
+    text = recognize_speech(audio)
+    chatbot_response(text)
