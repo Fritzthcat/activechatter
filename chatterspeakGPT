@@ -2,7 +2,7 @@ import openai
 import speech_recognition as sr
 from gtts import gTTS
 import os
-
+# fix keywords
 keywords = ["hello", "how are you", "goodbye"]
 responses = ["Hi there!", "I'm doing well, thank you!", "Goodbye!"]
 
@@ -23,7 +23,7 @@ def generate_response(text):
 
     message = completions.choices[0].text
     return message
-
+#text to speech
 def respond_to_text(text):
     for keyword, response in zip(keywords, responses):
         if keyword in text.lower():
@@ -34,7 +34,7 @@ def speak_response(response):
     tts = gTTS(response)
     tts.save("response.mp3")
     os.system("mpg321 response.mp3")
-
+#responder code here
 with sr.Microphone() as source:
     while True:
         print("Listening...")
