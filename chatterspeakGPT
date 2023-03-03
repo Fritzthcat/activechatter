@@ -5,12 +5,12 @@ import os
 # fix keywords
 keywords = ["hello", "how are you", "goodbye"]
 responses = ["Hi there!", "I'm doing well, thank you!", "Goodbye!"]
-
+#insatll dotenv
 openai.api_key = "YOUR_API_KEY_HERE"
 model_engine = "text-davinci-002"
 
 recognizer = sr.Recognizer()
-
+#check to see if this works 
 def generate_response(text):
     completions = openai.Completion.create(
         engine=model_engine,
